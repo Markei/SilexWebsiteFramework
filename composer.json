@@ -1,0 +1,30 @@
+{
+    "name": "markei/silexwebsiteframework",
+    "description": "Quickstart building sites with Silex, Twig, Symfony Forms, Imagine and Swiftmailer",
+    "type": "library"
+    "license": "MIT",
+    "require": {
+        "twig/twig": "~2.0",
+        "silex/silex": "~2.0",
+        "swiftmailer/swiftmailer": "~5.3",
+        "imagine/imagine": "^0.6.3",
+        "symfony/form": "^3.2",
+        "symfony/validator": "^3.2",
+        "symfony/translation": "^3.2",
+        "symfony/twig-bridge": "^3.2",
+        "symfony/security-csrf": "^3.2",
+        "symfony/config": "^3.2"
+    },
+    "authors": [
+        {
+            "name": "Maarten de Keizer",
+            "email": "m.de.keizer@markei.nl",
+            "homepage": "http://www.maartendekeizer.nl"
+        }
+    ],
+    "autoload": {
+        "psr-0": {
+            "Markei\\SilexWebsiteFramework\\": "src/"
+        }
+    }
+}

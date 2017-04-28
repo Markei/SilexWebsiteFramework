@@ -1,0 +1,14 @@
+{% extends 'silex-website-framework-base.html.twig' %}
+
+{% block title %}Internal Server Error{% endblock %}
+
+{% block header %}500 - Internal Server Error{% endblock %}
+
+{% block document %}
+    <p class="lead">Looks like something went wrong!</p>
+    <p>An internal server error occurred. Please try again later.</p>
+{% if debug %}
+    <h2>Debug information (only available when debug is activated)</h2>
+    <p class="error-message">{{ message }}</p>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,16 @@
+# Composer
+vendor/
+composer.lock
+composer.phar
+
+# IDE
+.buildpath
+.settings/
+.project
+
+# OS files
+__macosx
+__MACOSX
+Thumbs.db
+.DS_Store
+desktop.ini
