@@ -1,7 +1,7 @@
 {
     "name": "markei/silexwebsiteframework",
     "description": "Quickstart building sites with Silex, Twig, Symfony Forms, Imagine and Swiftmailer",
-    "type": "library"
+    "type": "library",
     "license": "MIT",
     "require": {
         "twig/twig": "~2.0",
