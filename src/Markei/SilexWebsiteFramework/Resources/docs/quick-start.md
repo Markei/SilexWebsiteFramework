@@ -75,7 +75,7 @@ Register your new controller in `/src/YourNamespace/ProjectNamespace/Application
 
     protected function registerControllers()
     {
-        $this['controllers.mycontroller'] = function ($this) { return new Controller\MyController($this); };
+        $this['controllers.mycontroller'] = function ($app) { return new Controller\MyController($app); };
         parent::registerControllers();
     }
 

@@ -155,9 +155,9 @@ class Application extends \Silex\Application
      */
     protected function registerControllers()
     {
-        $this['controllers.page'] = function ($this) { return new PageController($this); };
-        $this['controllers.imagine'] = function ($this) { return new ImagineController($this); };
-        $this['controllers.error'] = function ($this) { return new ErrorController($this); };
+        $this['controllers.page'] = function ($app) { return new PageController($app); };
+        $this['controllers.imagine'] = function ($app) { return new ImagineController($app); };
+        $this['controllers.error'] = function ($app) { return new ErrorController($app); };
     }
 
     /**
