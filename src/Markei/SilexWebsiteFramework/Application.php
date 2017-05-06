@@ -12,7 +12,6 @@ use Markei\SilexWebsiteFramework\Controllers\ImagineController;
 use Markei\SilexWebsiteFramework\Controllers\ErrorController;
 use Markei\SilexWebsiteFramework\Twig\ImagineExtension;
 use Markei\SilexWebsiteFramework\Twig\ConfigExtension;
-use Silex\Application;
 
 /**
  * @author maartendekeizer
