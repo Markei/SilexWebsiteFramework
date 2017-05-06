@@ -22,7 +22,7 @@ class ImagineController extends BaseController
         $targetDir = substr($targetPath, 0, strrpos($targetPath, DIRECTORY_SEPARATOR));
 
         if (file_exists($targetDir) === false)
-            mkdir($targetDir, null, true);
+            mkdir($targetDir, 0775, true);
 
         $expectedChecksum = substr(sha1(str_replace([' '], ['%20'], $webPath) . $size . $this->app['imagine.secret']), 0, 10);
         if ($expectedChecksum !== $checksum)
