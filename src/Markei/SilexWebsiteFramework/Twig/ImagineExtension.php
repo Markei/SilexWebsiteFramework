@@ -38,7 +38,6 @@ class ImagineExtension extends \Twig_Extension
     {
         $base = $this->app['imagine.source_url'];
         if (substr($mediaUrl, 0, strlen($base)) !== $base) {
-            exit('a');
             return $mediaUrl;
         }
 
