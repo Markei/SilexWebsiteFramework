@@ -12,6 +12,7 @@ use Markei\SilexWebsiteFramework\Controllers\ImagineController;
 use Markei\SilexWebsiteFramework\Controllers\ErrorController;
 use Markei\SilexWebsiteFramework\Twig\ImagineExtension;
 use Markei\SilexWebsiteFramework\Twig\ConfigExtension;
+use Silex\Provider\CsrfServiceProvider;
 use Symfony\Component\Form\FormRenderer;
 
 /**
@@ -129,6 +130,7 @@ class Application extends \Silex\Application
     {
         $this->register(new FormServiceProvider(), array('form.secret' => $this['form.secret']));
         $this->register(new ValidatorServiceProvider(), array());
+        $this->register(new CsrfServiceProvider());
     }
 
     /**
