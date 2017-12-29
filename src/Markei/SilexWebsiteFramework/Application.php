@@ -86,6 +86,7 @@ class Application extends \Silex\Application
     {
         parent::boot();
         $this->bootTwig();
+        $this->bootDatabase();
         $this->bootForm();
         $this->bootTranslation();
         $this->bootSwiftmailer();
@@ -154,6 +155,15 @@ class Application extends \Silex\Application
                         'auth_mode' => $this['smtp.auth_mode']
                     )
             ));
+    }
+
+    /**
+     * Boots the Database Service Provider
+     * It's empty by default, please override with your own implementation
+     */
+    protected function bootDatabase()
+    {
+        //
     }
 
     /**
