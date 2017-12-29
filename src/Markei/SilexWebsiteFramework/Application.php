@@ -71,9 +71,6 @@ class Application extends \Silex\Application
                 'smtp.password',
                 'smtp.encryption',
                 'smtp.auth_mode',
-                'twig.path',
-                'twig.form.templates',
-                'twig.options',
                 'form.secret',
                 'translation.locale'
             ];
@@ -100,11 +97,7 @@ class Application extends \Silex\Application
      */
     protected function bootTwig()
     {
-        $options = array(
-            'twig.path' => is_array($this['twig.path']) ? $this['twig.path'] : [$this['twig.path']],
-            'twig.form.templates' => $this['twig.form.templates'],
-            'twig.options' => $this['twig.options']
-        );
+        $options = $this->getTwigOptions();
         $options['twig.path'][] = __DIR__ . DIRECTORY_SEPARATOR . 'Resources' . DIRECTORY_SEPARATOR . 'views';
         if ($this['debug'] === false) {
             $options['twig.options']['cache'] = $this['app.cache'] . DIRECTORY_SEPARATOR . 'twig';
@@ -166,6 +159,19 @@ class Application extends \Silex\Application
     protected function bootDatabase()
     {
         //
+    }
+
+    /**
+     * Get an array of options for Twig configuration
+     * @return array
+     */
+    protected function getTwigOptions()
+    {
+        return [
+            'twig.path' => [],
+            'twig.form.templates' => [],
+            'twig.options' => isset($this['twig.options']) ? $this['twig.options'] : [],
+        ];
     }
 
     /**
