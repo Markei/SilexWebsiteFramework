@@ -12,6 +12,7 @@ use Markei\SilexWebsiteFramework\Controllers\ImagineController;
 use Markei\SilexWebsiteFramework\Controllers\ErrorController;
 use Markei\SilexWebsiteFramework\Twig\ImagineExtension;
 use Markei\SilexWebsiteFramework\Twig\ConfigExtension;
+use Symfony\Component\Form\FormRenderer;
 
 /**
  * @author maartendekeizer
@@ -107,6 +108,12 @@ class Application extends \Silex\Application
             $options['twig.options']['cache'] = $this['app.cache'] . DIRECTORY_SEPARATOR . 'twig';
         }
         $this->register(new TwigServiceProvider(), $options);
+        // patch for SF 3.4 break / https://github.com/silexphp/Silex/issues/1579
+        $this->extend('twig.runtimes', function ($runtimes, $app) {
+            return array_merge($runtimes, [
+                FormRenderer::class => 'twig.form.renderer',
+            ]);
+        });
         $this->extend('twig', function (\Twig_Environment $twig, Application $app) {
             $twig->addExtension(new ImagineExtension($app));
             $twig->addExtension(new ConfigExtension($app));
