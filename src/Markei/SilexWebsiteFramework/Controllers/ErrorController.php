@@ -30,7 +30,8 @@ class ErrorController extends BaseController
     {
         $parameters = array(
                 'message' => $e->getMessage(),
-                'debug' => $this->app['debug']
+                'debug' => $this->app['debug'],
+                'trace' => $e->getTraceAsString()
             );
 
         return $this->twig->render('Error/internalServerError.html.twig', $parameters);
