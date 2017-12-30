@@ -5,6 +5,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * @author maartendekeizer
@@ -36,6 +37,11 @@ class ImagineController extends BaseController
         $box = new \Imagine\Image\Box($sizeArray[0], $sizeArray[1]);
 
         $mode = \Imagine\Image\ImageInterface::THUMBNAIL_OUTBOUND;
+
+        if (file_exists($fullPath) === false || is_dir($fullPath) === true) {
+            $image = $imagine->create($box, (new \Imagine\Image\Palette\RGB())->color('#CCCCCC', 100));
+            return new Response($image->get('jpg'), 200, ['Content-type' => 'image/jpeg']);
+        }
 
         $imagine
             ->open($fullPath)
