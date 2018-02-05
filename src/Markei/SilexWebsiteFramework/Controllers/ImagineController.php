@@ -25,8 +25,9 @@ class ImagineController extends BaseController
         if (file_exists($targetDir) === false)
             mkdir($targetDir, 0775, true);
 
-        $expectedChecksum = substr(sha1(str_replace([' '], ['%20'], $webPath) . $size . $this->app['imagine.secret']), 0, 10);
-        if ($expectedChecksum !== $checksum)
+        $expectedChecksum1 = substr(sha1(str_replace([' '], ['%20'], $webPath) . $size . $this->app['imagine.secret']), 0, 10);
+        $expectedChecksum2 = substr(sha1($webPath . $size . $this->app['imagine.secret']), 0, 10);
+        if ($expectedChecksum1 !== $checksum && $expectedChecksum2 !== $checksum)
             throw new NotFoundHttpException('Invalid checksum');
 
         $sizeArray = explode('x', $size);
